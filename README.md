@@ -4,9 +4,9 @@
 
 The Events Management System is a full-stack web application designed to
 streamline event organization and participant management. It provides a
-user-friendly interface for creating events, managing event details, and
-tracking participant registrations. The system offers features for both frontend
-visualization and backend data handling.
+user-friendly interface for managing event details, and tracking participant
+registrations. The system offers features for both frontend visualization and
+backend data handling.
 
 ## Technologies Used
 
