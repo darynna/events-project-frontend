@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { registerParticipant } from '../../redux/Events/eventsSlice';
 import { selectEvents } from '../../redux/Events/eventsSelectors';
 import { toastRejected } from 'services/notify';
+import { convertToISOString } from 'utilities/convertDateFunction';
 
 const validationSchema = Yup.object().shape({
   fullName: Yup.string().required('Full Name is required'),
@@ -35,12 +36,17 @@ export const FormElement = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting }) => {
+        const currentDate = new Date();
+        const formattedDate = currentDate.toISOString();
+        
         const participantData = {
           name: values.fullName,
           email: values.email,
-          dateOfBirth: values.dateOfBirth,
+          dateOfRegistration: formattedDate,
+          dateOfBirth: convertToISOString(values.dateOfBirth),
           heardAboutEvent: values.heardAboutEvent,
         };
+        console.log(participantData)
           const event = events.find((event) => event._id === eventId);
           const participants = event.participants;
           const isEmailRegistered = participants.some(participant => participant.email === values.email);
