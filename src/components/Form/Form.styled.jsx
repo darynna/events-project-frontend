@@ -44,6 +44,10 @@ export const FormWrap = styled(Form)`
     .lable{
         font-weight: 700px;
     }
+    .error{
+        font-size: 12px;
+        color: red
+    }
 `
 
 export const FormWrapcontent = styled.div`
