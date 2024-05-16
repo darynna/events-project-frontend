@@ -1,9 +1,9 @@
-import {requestEvents } from "services/api";
+import {requestEvents, requestRegistration } from "services/api";
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { toastRejected } from "../../services/notify";
 
 export const apiGetEvents = createAsyncThunk(
-  "user/friends",
+  "events/events",
   async (formData, thunkApi) => {
     try {
         const eventsData = await requestEvents();
@@ -11,6 +11,18 @@ export const apiGetEvents = createAsyncThunk(
     } catch (error) {
       toastRejected("Something went wrong, please try again later!");
       return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const registerParticipant = createAsyncThunk(
+  'registration/registerParticipant',
+  async ({ eventId, participantData }, thunkApi) => {
+    try {
+      const data = await requestRegistration(eventId, participantData);
+      return data;
+    } catch (error) {
+      throw error; // Handle errors in the component
     }
   }
 );
@@ -29,16 +41,15 @@ const eventsSlice = createSlice({
   extraReducers: (builder) =>
     builder
 
-   
-
-      // ------------ Get friends ----------------------
+  
       .addCase(apiGetEvents.fulfilled, (state, action) => {
         state.isLoading = false;
         state.events = action.payload;
       })
       .addMatcher(
         isAnyOf(
-            apiGetEvents.pending,
+          apiGetEvents.pending,
+          registerParticipant.pending
         ),
         (state) => {
           state.isLoading = true;
@@ -47,7 +58,8 @@ const eventsSlice = createSlice({
       )
       .addMatcher(
         isAnyOf(
-            apiGetEvents.rejected,
+          apiGetEvents.rejected,
+          registerParticipant.rejected
         ),
         (state) => {
           state.isLoading = false;
