@@ -1,14 +1,15 @@
 import { nanoid } from "@reduxjs/toolkit"
 import { ParticipantsItem } from "./ParticipantsItem";
+import { ParticipantsListStyled } from "./Participants.styled";
 
 export const ParticipantsList = ({ participants }) => {
     return (
-        <ul>
+        <ParticipantsListStyled>
                 {
                     participants.map((participant) => {
                      return  <li key={nanoid()}> <ParticipantsItem participant={participant} /></li>
                     })
                }
-        </ul>
+        </ParticipantsListStyled>
     )
 }

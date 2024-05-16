@@ -1,9 +1,11 @@
+import { ParticipantsItemStyled } from "./Participants.styled";
+
 export const ParticipantsItem = ({ participant }) => {
         const { name, email } = participant;
     return (
-       <div>
-            <p>{name}</p>
-            <p>{email}</p>
-       </div>
+       <ParticipantsItemStyled>
+            <p className="name">{name}</p>
+            <p className="email">{email}</p>
+       </ParticipantsItemStyled>
     )
 }

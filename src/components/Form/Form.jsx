@@ -7,6 +7,7 @@ import { registerParticipant } from '../../redux/Events/eventsSlice';
 import { selectEvents } from '../../redux/Events/eventsSelectors';
 import { toastRejected } from 'services/notify';
 import { convertToISOString } from 'utilities/convertDateFunction';
+import { FormWrap } from './Form.styled';
 
 const validationSchema = Yup.object().shape({
   fullName: Yup.string().required('Full Name is required'),
@@ -60,20 +61,20 @@ export const FormElement = () => {
       }}
     >
       {({ errors, touched }) => (
-        <Form>
-          <div>
-            <label htmlFor="fullName">Full Name</label>
-            <Field type="text" id="fullName" name="fullName" />
+        <FormWrap>
+          <div className='wrap'>
+            <label className='lable' htmlFor="fullName">Full Name</label>
+            <Field className="field" type="text" id="fullName" name="fullName" />
             <ErrorMessage name="fullName" component="div" className="error" />
           </div>
-          <div>
-            <label htmlFor="email">Email</label>
-            <Field type="email" id="email" name="email" />
+          <div className='wrap'>
+            <label className='lable' htmlFor="email">Email</label>
+            <Field className="field" type="email" id="email" name="email" />
             <ErrorMessage name="email" component="div" className="error" />
           </div>
-          <div>
-            <label htmlFor="dateOfBirth">Date of Birth (dd/mm/yyyy)</label>
-            <Field type="text" id="dateOfBirth" name="dateOfBirth" />
+          <div className='wrap'>
+            <label className='lable' htmlFor="dateOfBirth">Date of Birth (dd/mm/yyyy)</label>
+            <Field className="field" type="text" id="dateOfBirth" name="dateOfBirth" />
             <ErrorMessage
               name="dateOfBirth"
               component="div"
@@ -81,7 +82,7 @@ export const FormElement = () => {
             />
           </div>
           <div>
-            <label>Where did you hear about us?</label>
+            <label className='lable'>Where did you hear about us?</label>
             <div>
               <label>
                 <Field
@@ -110,8 +111,8 @@ export const FormElement = () => {
               className="error"
             />
           </div>
-          <button type="submit">Submit</button>
-        </Form>
+          <button className='button' type="submit">Submit</button>
+        </FormWrap>
       )}
     </Formik>
   );

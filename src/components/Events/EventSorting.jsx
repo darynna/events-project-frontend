@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { SortWrap } from "./Events.styled";
 
 const EventSorting = ({ onSort }) => {
   const [sortBy, setSortBy] = useState(""); // State to store sorting option
@@ -11,15 +12,15 @@ const EventSorting = ({ onSort }) => {
   };
 
   return (
-    <div>
-      <label>Sort by:</label>
+    <SortWrap>
+      <label className="lable">Sort by:</label>
       <select value={sortBy} onChange={handleSortChange}>
         <option value="">Select</option>
         <option value="title">Title</option>
         <option value="date">Date</option>
         <option value="organizer">Organizer</option>
       </select>
-    </div>
+    </SortWrap>
   );
 };
 

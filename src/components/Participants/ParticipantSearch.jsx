@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ParticipantsSearch } from "./Participants.styled";
 
 const ParticipantSearch = ({ onSearch }) => {
     const [searchTerm, setSearchTerm] = useState(""); 
@@ -10,14 +11,14 @@ const ParticipantSearch = ({ onSearch }) => {
     };
 
     return (
-        <div>
-            <input
+        <ParticipantsSearch>
+            <input className="input"
                 type="text"
                 placeholder="Search by name or email"
                 value={searchTerm}
                 onChange={handleSearchChange}
             />
-        </div>
+        </ParticipantsSearch>
     );
 };
 

@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom"
 import { FormElement } from "./Form"
+import { FormWrapcontent } from "./Form.styled"
 export const FormContent = () => {
     return (
-        <>
-            <NavLink to={`/`}>Back to all events</NavLink>
-             <p>Event Registration</p>
+        <FormWrapcontent>
+            <NavLink className="link" to={`/`}>Back to all events</NavLink>
+             <p className="title">Event Registration</p>
         <FormElement/>
-        </>
+        </FormWrapcontent>
     )
 }

@@ -8,7 +8,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 export const EventContent = () => {
       const events = useSelector(selectEvents);
   const [sortedEvents, setSortedEvents] = useState(events); // State to store sorted events
-   const [itemsToShow, setItemsToShow] = useState(4); 
+   const [itemsToShow, setItemsToShow] = useState(10); 
 
   // Function to handle sorting events
   const handleSort = (sortBy) => {
@@ -30,7 +30,7 @@ export const EventContent = () => {
   };
 
   const fetchData = () => {
-        setItemsToShow(itemsToShow + 4);
+        setItemsToShow(itemsToShow + 10);
   };
   
     return (

@@ -5,6 +5,7 @@ import { ParticipantsList } from "./ParticipantsList";
 import { useState } from "react";
 import ParticipantSearch from "./ParticipantSearch";
 import RegistrationsChart from "./Chart";
+import { ParticipantsMainContent } from "./Participants.styled";
 
 export const ParticipantsContent = () => {
     const events = useSelector(selectEvents);
@@ -22,14 +23,14 @@ export const ParticipantsContent = () => {
     };
     
     return (
-        <>
-             <NavLink to={`/`}>Back to all events</NavLink>
+        <ParticipantsMainContent>
+             <NavLink className="link" to={`/`}>Back to all events</NavLink>
             <ParticipantSearch onSearch={handleSearch} />
             {
                 participants ? <ParticipantsList participants={filteredParticipants} />
                     : <div>Loading...</div>
             }
             <RegistrationsChart event={event} />
-        </>
+        </ParticipantsMainContent>
     )
 }

@@ -1,8 +1,9 @@
 import { EventItem } from "./EventItem"
+import { ListWrap } from "./Events.styled"
 
 export const EventList = ({events}) => {
     return (
-        <ul>
+        <ListWrap>
             {
                 events.map((event) => {
                     return (
@@ -10,6 +11,6 @@ export const EventList = ({events}) => {
                     )
                 })
             }
-        </ul>
+        </ListWrap>
     )
 }
