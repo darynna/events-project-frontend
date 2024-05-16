@@ -36,7 +36,7 @@ export const FormElement = () => {
         heardAboutEvent: '',
       }}
       validationSchema={validationSchema}
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={(values, { setSubmitting, resetForm }) => {
         const currentDate = new Date();
         const formattedDate = currentDate.toISOString();
         
@@ -47,7 +47,6 @@ export const FormElement = () => {
           dateOfBirth: convertToISOString(values.dateOfBirth),
           heardAboutEvent: values.heardAboutEvent,
         };
-        console.log(participantData)
           const event = events.find((event) => event._id === eventId);
           const participants = event.participants;
           const isEmailRegistered = participants.some(participant => participant.email === values.email);
@@ -58,6 +57,7 @@ export const FormElement = () => {
   }
         dispatch(registerParticipant({ eventId, participantData }));
         setSubmitting(false);
+        resetForm();
       }}
     >
       {({ errors, touched }) => (

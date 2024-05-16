@@ -1,6 +1,6 @@
 import {requestEvents, requestRegistration } from "services/api";
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { toastRejected } from "../../services/notify";
+import { toastFulfild, toastRejected } from "../../services/notify";
 
 export const apiGetEvents = createAsyncThunk(
   "events/events",
@@ -20,9 +20,10 @@ export const registerParticipant = createAsyncThunk(
   async ({ eventId, participantData }, thunkApi) => {
     try {
       const data = await requestRegistration(eventId, participantData);
+      toastFulfild("You have registered for the event!")
       return data;
     } catch (error) {
-      throw error; // Handle errors in the component
+      throw error; 
     }
   }
 );
